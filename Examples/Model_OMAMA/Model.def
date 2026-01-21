@@ -1,0 +1,16 @@
+Operational model of allosterically modulated agonism
+
+Emax = 1.0
+KA = 1e-06
+tauA = 3.0
+alpha = 5.0
+KB = 1e-06
+tauB = 0.5
+beta = 2.0
+[B]1 = 0.0
+[B]2 = 3e-07
+[B]3 = 1e-06
+[B]4 = 3e-06
+
+
+29.10.2020 17:46:32

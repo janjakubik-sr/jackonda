@@ -1,0 +1,16 @@
+Operational Model - Substrate inhibition
+
+Model parameters
+Emax = 1.0
+logKa = -6.0
+Ke = 3.333
+Ki = 1.0
+R1 = 0.2
+R2 = 0.5
+R3 = 1.0
+R4 = 2.0
+R5 = 5.0
+noise = 0.0
+
+
+01.06.2023 15:14:25

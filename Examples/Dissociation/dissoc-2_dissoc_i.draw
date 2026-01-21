@@ -1,0 +1,38 @@
+read xydy "/home/roshi/jackonda/Examples/Dissociation/dissoc-2.dat" 
+s0 symbol 1 
+s0 symbol size 0.7 
+s0 symbol color 1 
+s0 symbol fill color 0 
+s0 symbol fill pattern 1 
+s0 errorbar color 1 
+s0 errorbar size 0.7 
+s0 line type 0 
+s0 legend "K\sOff1\N=0.2567 \#{B1} 0.0584; K\sOff2\N=0.0092 \#{B1} 0.0014; F\s2\N=63 \#{B1} 4; /home/roshi/jackonda/Examples/Dissociation/dissoc-2" 
+read xy "/home/roshi/jackonda/Examples/Dissociation/dissoc-2_dissoc_i_fit.data" 
+s1 symbol 0 
+s1 line type 1 
+s1 line color 1 
+s1 layer 51 
+s1 legend off 
+page layout portrait 
+view xmin 0.2 
+view xmax 0.8 
+view ymin 0.85 
+view ymax 1.25 
+world xmin 0 
+world xmax 99.00000000000001 
+world ymin 0 
+world ymax 120 
+xaxis label "Time []"  
+xaxis label font "Helvetica"  
+xaxis ticklabel font "Helvetica"  
+xaxis  tick major size 0.8 
+xaxis  tick minor size 0.4 
+yaxis label "binding [% of control]"  
+yaxis label font "Helvetica"  
+yaxis ticklabel font "Helvetica"  
+yaxis  tick major size 0.8 
+yaxis  tick minor size 0.4 
+legend 0.2, 0.7 
+legend char size 0.7 
+legend font "Helvetica" 

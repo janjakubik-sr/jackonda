@@ -1,0 +1,16 @@
+Operational model of agonism at receptor dimers
+
+Emax = 1.0
+logKA = -6.0
+logKB = -6.0
+tau = 3.0
+beta = 1.0
+gamma = 1.0
+alpha1 = 0.1
+alpha2 = 0.3
+alpha3 = 1.0
+alpha4 = 3.0
+alpha5 = 10.0
+
+
+13.04.2022 11:11:27

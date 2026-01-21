@@ -1,0 +1,84 @@
+read xydy "/home/roshi/jackonda/Examples/Model_OMAMA/Data_A.dat" 
+s0 symbol 1 
+s0 symbol size 0.8 
+s0 symbol color 1 
+s0 symbol fill color 1 
+s0 symbol fill pattern 1 
+s0 errorbar color 1 
+s0 errorbar size 0.8 
+s0 line type 0 
+s0 legend " \f{Symbol}a\f{}=5.42 \#{B1} 0.39 \f{Symbol}b\f{}=2.01 \#{B1} 0.07" 
+read xy "Data_A_OMAMA_3D.fit.data" 
+s1 symbol 0 
+s1 line type 1 
+s1 line color 1 
+s1 layer 51 
+s1 legend off 
+read xydy "/home/roshi/jackonda/Examples/Model_OMAMA/Data_B.dat" 
+s2 symbol 2 
+s2 symbol size 0.8 
+s2 symbol color 2 
+s2 symbol fill color 2 
+s2 symbol fill pattern 1 
+s2 errorbar color 2 
+s2 errorbar size 0.8 
+s2 line type 0 
+read xy "Data_B_OMAMA_3D.fit.data" 
+s3 symbol 0 
+s3 line type 1 
+s3 line color 2 
+s3 layer 51 
+s3 legend off 
+read xydy "/home/roshi/jackonda/Examples/Model_OMAMA/Data_C.dat" 
+s4 symbol 3 
+s4 symbol size 0.8 
+s4 symbol color 3 
+s4 symbol fill color 3 
+s4 symbol fill pattern 1 
+s4 errorbar color 3 
+s4 errorbar size 0.8 
+s4 line type 0 
+read xy "Data_C_OMAMA_3D.fit.data" 
+s5 symbol 0 
+s5 line type 1 
+s5 line color 3 
+s5 layer 51 
+s5 legend off 
+read xydy "/home/roshi/jackonda/Examples/Model_OMAMA/Data_D.dat" 
+s6 symbol 4 
+s6 symbol size 0.8 
+s6 symbol color 4 
+s6 symbol fill color 4 
+s6 symbol fill pattern 1 
+s6 errorbar color 4 
+s6 errorbar size 0.8 
+s6 line type 0 
+read xy "Data_D_OMAMA__3D.fit.data" 
+s7 symbol 0 
+s7 line type 1 
+s7 line color 4 
+s7 layer 51 
+s7 legend off 
+page layout portrait 
+view xmin 0.2 
+view xmax 0.8 
+view ymin 0.85 
+view ymax 1.25 
+world xmin -10.5 
+world xmax -1.5 
+world ymin 0 
+world ymax 0.9829930000000001 
+xaxis label "[log c]"  
+xaxis label font "Helvetica"  
+xaxis ticklabel font "Helvetica"  
+xaxis  tick major 1 
+xaxis  tick major size 0.8 
+xaxis  tick minor size 0.4 
+yaxis label "[fold over basal]"  
+yaxis label font "Helvetica"  
+yaxis ticklabel font "Helvetica"  
+yaxis  tick major size 0.8 
+yaxis  tick minor size 0.4 
+legend 0.15, 0.7 
+legend char size 0.8 
+legend font "Helvetica" 

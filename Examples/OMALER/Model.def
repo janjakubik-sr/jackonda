@@ -1,0 +1,15 @@
+Operational Model - Depleted system
+Various receptor levels
+
+Model parameters
+Etot = 1e-06
+Ke = 1e-07
+logKa = -7.0
+R1 = 1e-07
+R2 = 3e-07
+R3 = 1e-06
+R4 = 3e-06
+R5 = 1e-05
+
+
+31.05.2023 15:28:56

@@ -1,0 +1,50 @@
+read xydy "assoc-1.dat" 
+s0 symbol 1 
+s0 symbol size 0.7 
+s0 symbol color 1 
+s0 symbol fill color 0 
+s0 symbol fill pattern 1 
+s0 errorbar color 1 
+s0 errorbar size 0.7 
+s0 line type 0 
+s0 legend "K\sObs\N=0.0318 ± 0.0006; B\sEq\N=98.54 ± 0.46; assoc-1" 
+read xy "assoc-1_assoc_1_fit.data" 
+s1 symbol 0 
+s1 line type 1 
+s1 line color 1 
+read xydy "assoc-2.dat" 
+s2 symbol 2 
+s2 symbol size 0.7 
+s2 symbol color 1 
+s2 symbol fill color 0 
+s2 symbol fill pattern 1 
+s2 errorbar color 1 
+s2 errorbar size 0.7 
+s2 line type 0 
+s2 legend "K\sObs\N=0.0249 ± 0.0015; B\sEq\N=94.23 ± 1.53; assoc-2" 
+read xy "assoc-2_assoc_1_fit.data" 
+s3 symbol 0 
+s3 line type 1 
+s3 line color 1 
+page layout portrait 
+view xmin 0.2 
+view xmax 0.8 
+view ymin 0.85 
+view ymax 1.25 
+world xmin 0 
+world xmax 396.0 
+world ymin 0 
+world ymax 120.8004 
+xaxis label "Time []"  
+xaxis label font "Helvetica"  
+xaxis ticklabel font "Helvetica"  
+xaxis  tick major size 0.8 
+xaxis  tick minor size 0.4 
+yaxis label "binding [pmol / mg protein]"  
+yaxis label font "Helvetica"  
+yaxis ticklabel font "Helvetica"  
+yaxis  tick major size 0.8 
+yaxis  tick minor size 0.4 
+legend 0.2, 0.7 
+legend char size 0.7 
+legend font "Helvetica" 

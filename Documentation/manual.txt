@@ -1,0 +1,63 @@
+**************************************
+jackonda
+by Jan Jakubik (jakubik@biomed.cas.cz)
+Creative Commons Licence BY-NC
+**************************************
+
+How it works:
+pyJack assumes that each experiment has it own folder and (preprocessed) data for each curve to be fitted are in separate *.dat files. Data should be arranged column-wise in x, y, dy order separated either by spaces or tabs, without legends and row index. Please look at "Examples" folder. Data may be manually edited or rearranged within pyJack.
+
+1) pyJack works only with data in working directory, so before you start select your working directory from File menu.
+2) Edit your data if necessary from Edit menu.
+3) Batch analyze data by selecting the type of experiment from Batch Analysis menu.
+4) Scripts are fully automatic with checks for errors, data formatting, whether number of data points is sufficiet for analysis, etc.
+5) Scripts will take all *.dat files in your current folder one by one, analyse them, log to the main window, save the results to *.res file, create *.draw file for making fancy graphs with Grace and make a simple preview graph of analysis.
+6) Finalize your graph in Grace by selecting "Plot results with Grace" from "Results" menu and SAVE it.
+7) You may analyse data using different equations. pyJack Grace will create separate files with results (*.res) and drawing instructions (*.draw) for each analysis. Repeating the same analysis will overwrite previous results.
+8) It may happen that pyJack fails in fitting or you do not like results. Then you may try interactive fitting by guiding pyJack with your own estimates and limits. However be adviced that in such case it is very likely that data or choice of equation is bad.
+
+Types of experiments:
+Allosteric interaction
+y = 100*(D + KD) / (D + (KD*(KA+10^x))/(KA+(10^x)/alpha))
+where y is binding at concentration of allosteric modulator x, D is koncentration of radioligand and KD is its equilibrium dissociation constant. X-axis is logarithmic. Equilibrium dissociation constant of allosteric modulator KA and factor of cooperativity alpha are calculated.
+Ref. Ehlert FJ (1988) Estimation of the affinities of allosteric ligands using radioligand binding and pharmacological null methods. Mol Pharmacol 33: 187-194.
+
+Association
+y = Beq * (1 - exp(-kon * x))
+where y is binding at time. X-axis is linear. Binding at equilibrium Beq and apparent association rate kon are calculated.
+
+Competition
+y = 100 - 100 * 10^(x*nH) / (IC50^nH + 10^(x*nH))
+where y is binding at concentration x. X-axis is logarithmic Concentration causing 50 % inhibition IC50 and Hill coefficient nH are calculated.
+
+Dissociation
+y = 100 * exp(-koff * x)
+where y is binding at time x expressed at per cents of the binding at beginning of dissociation. X-axis is linear. Dissociation rate koff is calculated.
+
+Functional response
+y = basal + (Emax - basal) / (1 + 10^((EC50 -x)*nH))
+where Y is response at concentration x. X-axis is logarithmic. Basal response, concentration causing 50% of response EC50, maximal response Emax and Hill coefficient nH are calculated.
+
+Saturation
+y = Bmax * x / (KD + x)
+where y is binding at concentration x. X-axis is linear. Maximum binding capacity Bmax and equilibrium dissociation constant KD are calculated.
+
+3-ligands (two orthosteric and one allosteric)
+y = 100*(D + KD) / (D + KD*(I*(KA + (10^x)/beta) + Ki*(KA+10^x))/(Ki*(KA + (10^x)/alpha)))
+where y is binding at concentration of allosteric modulator x, D is concentration of radioligand and KD is its equilibrium dissociation constant, I is concentration of orthosteric ligand and Ki its equilibrium dissociation constant, KA is equilibrium dissociation constant of allosteric modulator and alpha is factor of cooperativity between radioligand and allosteric modulator. X-axis is logarithmic. Factor of cooperativity between non-labelled orthosteric ligand and allosteric modulator beta is calculated.
+Ref. Jakubi­k J, Bacakova L, El-Fakahany EE and Tucek S (1997) Positive cooperativity of acetylcholine and other agonists with allosteric ligands on muscarinic acetylcholine receptors. Mol Pharmacol 52: 172-179.
+
+alphaKD from dissociation rates
+y = koff * (alphaKD^nH) / (alphaKD^nH + 10^(x*nH))
+where y is dissociation rate at concentration of allosteric modulator x and koff is dissociation rate in the absence of allosteric modulator. X-axis is logarithmic. Equilibrium dissociation constant of allosteric modulator to receptor-radioligand complex alphaKD and Hill coefficient nH are calculated.
+Ref. Lazareno S and Birdsall NJ (1995) Detection, quantitation, and verification of allosteric interactions of agents with labeled and unlabeled ligands at G protein-coupled receptors: interactions of strychnine and acetylcholine at muscarinic receptors. Mol Pharmacol 48: 362-378.
+
+Schild analysis
+for competitive intraction
+y = [B] - logKB
+for allosteric interaction
+y = log([B]*(1-alpha)/(aplha*[B]+KB))
+where y is log(DR -), e.g. log (EC50'/EC50 -1), and KB is equilibrium dissociation constant of an antagonist. X-axis is logarithmic.
+
+Statistics
+Very basic tests for sample comparison, ANOVA and correlation tests are in Statistics menu. Statistics assumes that you know what you are doing.

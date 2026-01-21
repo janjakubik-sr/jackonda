@@ -1,0 +1,15 @@
+Operational Model - Signal feedback
+
+Model parameters
+Emax = 1.0
+Rtot = 1.0
+delta = 0.3333
+logKa = -6.0
+tau1 = 0.2
+tau2 = 0.5
+tau3 = 1.0
+tau4 = 2.0
+tau5 = 5.0
+
+
+31.05.2023 16:32:43

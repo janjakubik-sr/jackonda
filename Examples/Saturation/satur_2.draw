@@ -1,0 +1,120 @@
+read xydy "sat_0.dat" 
+s0 symbol 1 
+s0 symbol size 0.7 
+s0 symbol color 1 
+s0 symbol fill color 0 
+s0 symbol fill pattern 1 
+s0 errorbar color 1 
+s0 errorbar size 0.7 
+s0 line type 0 
+s0 legend "K\sD1\N=206.52 ± 184.28; B\sMAX1\N=6.79 ± 8.62; \nK\sD2\N=1156.79 ± 3632.71; B\sMAX2\N=4.49 ± 6.43; sat_0" 
+read xy "sat_0_satur_2_fit.data" 
+s1 symbol 0 
+s1 line type 1 
+s1 line color 1 
+read xydy "sat_1.dat" 
+s2 symbol 2 
+s2 symbol size 0.7 
+s2 symbol color 1 
+s2 symbol fill color 0 
+s2 symbol fill pattern 1 
+s2 errorbar color 1 
+s2 errorbar size 0.7 
+s2 line type 0 
+s2 legend "K\sD1\N=208.57 ± 190.58; B\sMAX1\N=5.70 ± 7.99; \nK\sD2\N=1000.00 ± 2945.25; B\sMAX2\N=3.66 ± 6.60; sat_1" 
+read xy "sat_1_satur_2_fit.data" 
+s3 symbol 0 
+s3 line type 1 
+s3 line color 1 
+read xydy "sat_2.dat" 
+s4 symbol 3 
+s4 symbol size 0.7 
+s4 symbol color 1 
+s4 symbol fill color 0 
+s4 symbol fill pattern 1 
+s4 errorbar color 1 
+s4 errorbar size 0.7 
+s4 line type 0 
+s4 legend "K\sD1\N=197.13 ± 140.56; B\sMAX1\N=6.51 ± 6.85; \nK\sD2\N=1000.00 ± 2397.08; B\sMAX2\N=4.06 ± 5.56; sat_2" 
+read xy "sat_2_satur_2_fit.data" 
+s5 symbol 0 
+s5 line type 1 
+s5 line color 1 
+read xydy "sat_3.dat" 
+s6 symbol 4 
+s6 symbol size 0.7 
+s6 symbol color 1 
+s6 symbol fill color 0 
+s6 symbol fill pattern 1 
+s6 errorbar color 1 
+s6 errorbar size 0.7 
+s6 line type 0 
+s6 legend "K\sD1\N=264.59 ± 221.92; B\sMAX1\N=5.92 ± 9.06; \nK\sD2\N=1000.00 ± 2330.97; B\sMAX2\N=4.15 ± 8.01; sat_3" 
+read xy "sat_3_satur_2_fit.data" 
+s7 symbol 0 
+s7 line type 1 
+s7 line color 1 
+read xydy "sat_6.dat" 
+s8 symbol 5 
+s8 symbol size 0.7 
+s8 symbol color 1 
+s8 symbol fill color 0 
+s8 symbol fill pattern 1 
+s8 errorbar color 1 
+s8 errorbar size 0.7 
+s8 line type 0 
+s8 legend "K\sD1\N=171.74 ± 163.12; B\sMAX1\N=6.26 ± 8.00; \nK\sD2\N=1000.00 ± 3299.89; B\sMAX2\N=3.88 ± 6.18; sat_6" 
+read xy "sat_6_satur_2_fit.data" 
+s9 symbol 0 
+s9 line type 1 
+s9 line color 1 
+read xydy "sat_7.dat" 
+s10 symbol 6 
+s10 symbol size 0.7 
+s10 symbol color 1 
+s10 symbol fill color 0 
+s10 symbol fill pattern 1 
+s10 errorbar color 1 
+s10 errorbar size 0.7 
+s10 line type 0 
+s10 legend "K\sD1\N=154.87 ± 157.19; B\sMAX1\N=6.48 ± 8.28; \nK\sD2\N=1000.00 ± 3084.60; B\sMAX2\N=4.67 ± 6.15; sat_7" 
+read xy "sat_7_satur_2_fit.data" 
+s11 symbol 0 
+s11 line type 1 
+s11 line color 1 
+read xydy "sat_8.dat" 
+s12 symbol 7 
+s12 symbol size 0.7 
+s12 symbol color 1 
+s12 symbol fill color 0 
+s12 symbol fill pattern 1 
+s12 errorbar color 1 
+s12 errorbar size 0.7 
+s12 line type 0 
+s12 legend "K\sD1\N=279.04 ± 368.45; B\sMAX1\N=5.05 ± 12.30; \nK\sD2\N=1049.63 ± 4145.64; B\sMAX2\N=3.35 ± 10.81; sat_8" 
+read xy "sat_8_satur_2_fit.data" 
+s13 symbol 0 
+s13 line type 1 
+s13 line color 1 
+page layout portrait 
+view xmin 0.2 
+view xmax 0.8 
+view ymin 0.85 
+view ymax 1.25 
+world xmin 0 
+world xmax 2200.0 
+world ymin 0 
+world ymax 10.8672 
+xaxis label "Free [ ]"  
+xaxis label font "Helvetica"  
+xaxis ticklabel font "Helvetica"  
+xaxis  tick major size 0.8 
+xaxis  tick minor size 0.4 
+yaxis label "binding [pmol / mg of protein]"  
+yaxis label font "Helvetica"  
+yaxis ticklabel font "Helvetica"  
+yaxis  tick major size 0.8 
+yaxis  tick minor size 0.4 
+legend 0.2, 0.7 
+legend char size 0.7 
+legend font "Helvetica" 

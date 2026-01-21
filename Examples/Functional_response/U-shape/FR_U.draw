@@ -1,0 +1,37 @@
+read xydy "DRC_U.dat" 
+s0 symbol 1 
+s0 symbol size 0.7 
+s0 symbol color 1 
+s0 symbol fill color 0 
+s0 symbol fill pattern 1 
+s0 errorbar color 1 
+s0 errorbar size 0.7 
+s0 line type 0 
+s0 legend "log EC\s50\N1=-7.01 ± 0.10; E\sMAX\N1=0.51 ± 0.04;\nlog EC\s50\N2=-4.97 ± 0.06; E\sMAX\N2=2.95 ± 0.23; DRC_U" 
+read xy "DRC_U_FR_U_fit.data" 
+s1 symbol 0 
+s1 line type 1 
+s1 line color 1 
+page layout portrait 
+view xmin 0.2 
+view xmax 0.8 
+view ymin 0.85 
+view ymax 1.25 
+world xmin -9.5 
+world xmax -2.5 
+world ymin 0 
+world ymax 1.62415 
+xaxis label "[log c]"  
+xaxis label font "Helvetica"  
+xaxis ticklabel font "Helvetica"  
+xaxis  tick major 1 
+xaxis  tick major size 0.8 
+xaxis  tick minor size 0.4 
+yaxis label "[fold over basal]"  
+yaxis label font "Helvetica"  
+yaxis ticklabel font "Helvetica"  
+yaxis  tick major size 0.8 
+yaxis  tick minor size 0.4 
+legend 0.2, 0.7 
+legend char size 0.7 
+legend font "Helvetica" 

@@ -1,0 +1,38 @@
+read xydy "/home/roshi/jackonda/Examples/Association/assoc-2.dat" 
+s0 symbol 1 
+s0 symbol size 0.7 
+s0 symbol color 1 
+s0 symbol fill color 0 
+s0 symbol fill pattern 1 
+s0 errorbar color 1 
+s0 errorbar size 0.7 
+s0 line type 0 
+s0 legend "K\sObs1\N=0.0319 \#{B1} 0.0041; B\sEq1\N=80.96 \#{B1} 9.12; \nK\sObs2\N=0.0010 \#{B1} 0.0062; B\sEq2\N=61.67 \#{B1} 304.10;\n/home/roshi/jackonda/Examples/Association/assoc-2" 
+read xy "/home/roshi/jackonda/Examples/Association/assoc-2_assoc_i_fit.data" 
+s1 symbol 0 
+s1 line type 1 
+s1 line color 1 
+s1 layer 51 
+s1 legend off 
+page layout portrait 
+view xmin 0.2 
+view xmax 0.8 
+view ymin 0.85 
+view ymax 1.25 
+world xmin 0 
+world xmax 396.00000000000006 
+world ymin 0 
+world ymax 120.8004 
+xaxis label "Time []"  
+xaxis label font "Helvetica"  
+xaxis ticklabel font "Helvetica"  
+xaxis  tick major size 0.8 
+xaxis  tick minor size 0.4 
+yaxis label "binding [pmol / mg protein]"  
+yaxis label font "Helvetica"  
+yaxis ticklabel font "Helvetica"  
+yaxis  tick major size 0.8 
+yaxis  tick minor size 0.4 
+legend 0.2, 0.7 
+legend char size 0.7 
+legend font "Helvetica" 

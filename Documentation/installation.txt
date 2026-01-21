@@ -1,0 +1,22 @@
+**************************************
+jackonda
+by Jan Jakubik (jakubik@biomed.cas.cz)
+Creative Commons Licence BY-NC
+**************************************
+
+Requirements:
+Python 3.10, WX 4.0, numpy, scipy and matplotlib are must. For a full-featured use the Grace for plotting is needed. My favorite clone is GraceGTK (https://sourceforge.net/p/gracegtk/home/gracegtk/). Depending on your experience you may also find usefull to install IPy, pyspread and R.
+
+Installation
+
+Linux
+1) Extract jackonda.tar.gz to folder of your choice, e.g. your home folder.
+2) Edit preferences.py
+3) Create executalbe script 'python /path_to_jackonda/bin/jackonda.py' in folder that in in your $PATH or in dektop application menu.
+4) Start jackonda by executing the script or from application menu.
+
+Windows
+1) Unzip jackonda_xxx.zip to directory of your choice, preferably C:\
+2) Edit preferences.py
+3) Create a shortcut with command 'python C:\path_to_jackonda\bin\jackonda.py' wherever you like.
+4) Start pyJack by clicking the shortcut.

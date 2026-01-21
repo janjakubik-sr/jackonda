@@ -1,0 +1,12 @@
+Operational model of agonism
+
+Emax = 1.0
+KA = 1e-06
+tau1 = 0.1
+tau2 = 1.0
+tau3 = 10.0
+tau4 = 100.0
+tau5 = 1000.0
+
+
+14.10.2020 11:08:31

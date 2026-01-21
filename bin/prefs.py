@@ -1,0 +1,87 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr 14 16:01:00 2016
+
+@author: Jan Jakubik jan.jakubik@fgu.cas.cz
+"""
+#!/usr/bin/env python
+import wx
+
+import preferences as pref
+install_dir = (pref.install_dir)
+prefs_file = (str(install_dir)+'preferences.py')
+
+class MainWindow(wx.Frame):
+    def __init__(self, filename=''):
+        super(MainWindow, self).__init__(None, size=(600,400))
+        self.filename = filename
+        self.dirname = '.'
+        self.CreateInteriorWindowComponents()
+        self.CreateExteriorWindowComponents()
+
+    def CreateInteriorWindowComponents(self):
+        prefsfile=open(prefs_file, 'r')
+        prefs=prefsfile.read()
+        prefsfile.close()
+        self.control = wx.TextCtrl(self, value=prefs, style=wx.TE_MULTILINE)
+
+    def CreateExteriorWindowComponents(self):
+        self.CreateMenu()
+        self.CreateStatusBar()
+        self.SetTitle()
+
+    def CreateMenu(self):
+        fileMenu = wx.Menu()
+        for id, label, helpText, handler in \
+            [(wx.ID_SAVE, '&Save', 'Save changes', self.OnSave),
+             (None, None, None, None),
+             (wx.ID_EXIT, 'E&xit', 'Terminate the program', self.OnExit)]:
+            if id == None:
+                fileMenu.AppendSeparator()
+            else:
+                item = fileMenu.Append(id, label, helpText)
+                self.Bind(wx.EVT_MENU, handler, item)
+
+        menuBar = wx.MenuBar()
+        menuBar.Append(fileMenu, '&File') # Add the fileMenu to the MenuBar
+        self.SetMenuBar(menuBar)  # Add the menuBar to the Frame
+
+    def SetTitle(self):
+        # MainWindow.SetTitle overrides wx.Frame.SetTitle, so we have to
+        # call it using super:
+        super(MainWindow, self).SetTitle('Preferences %s'%self.filename)
+
+
+    # Helper methods:
+
+    def defaultFileDialogOptions(self):
+        return dict(message='Choose a file', defaultDir=self.dirname,
+                    wildcard='*.*')
+
+    def askUserForFilename(self, **dialogOptions):
+        dialog = wx.FileDialog(self, **dialogOptions)
+        if dialog.ShowModal() == wx.ID_OK:
+            userProvidedFilename = True
+            self.filename = dialog.GetFilename()
+            self.dirname = dialog.GetDirectory()
+            self.SetTitle() # Update the window title with the new filename
+        else:
+            userProvidedFilename = False
+        dialog.Destroy()
+        return userProvidedFilename
+
+    # Event handlers:
+
+    def OnExit(self, event):
+        self.Close()  # Close the main window.
+
+    def OnSave(self, event):
+        prefsfile=open(prefs_file, 'w')
+        prefsfile.write(self.control.GetValue())
+        prefsfile.close()
+
+app = wx.App()
+frame = MainWindow()
+frame.Show()
+app.MainLoop()

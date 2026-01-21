@@ -1,0 +1,55 @@
+read xydy "alpha_02_beta_2.dat" 
+s0 symbol 1 
+s0 symbol size 0.7 
+s0 symbol color 1 
+s0 symbol fill color 1 
+s0 symbol fill pattern 1 
+s0 errorbar color 1 
+s0 errorbar size 0.7 
+s0 line type 0 
+s0 legend "logK\sA1\N=-7.86 \#{B1} 15986.89; \f{Symbol}a\f{}1=0.16 \#{B1} 5500.60\nlogK\sA2\N=-6.34 \#{B1} 530870.07; \f{Symbol}a\f{}2=2.433 \#{B1} 83845.390; \f{Symbol}g\f{}=0.636 \#{B1} 754094.703; alpha_02_beta_2" 
+read xy "alpha_02_beta_2_alloster_1_2d_fit.data" 
+s1 symbol 0 
+s1 line type 1 
+s1 line color 1 
+s1 layer 51 
+s1 legend off 
+read xydy "alpha_2_beta_02.dat" 
+s2 symbol 2 
+s2 symbol size 0.7 
+s2 symbol color 2 
+s2 symbol fill color 2 
+s2 symbol fill pattern 1 
+s2 errorbar color 2 
+s2 errorbar size 0.7 
+s2 line type 0 
+s2 legend "logK\sA1\N=-8.09 \#{B1} 4833.51; \f{Symbol}a\f{}1=2.05 \#{B1} 277067.73\nlogK\sA2\N=-6.28 \#{B1} 312504.50; \f{Symbol}a\f{}2=0.186 \#{B1} 25066.240; \f{Symbol}g\f{}=2.193 \#{B1} 1553878.642; alpha_2_beta_02" 
+read xy "alpha_2_beta_02_alloster_1_2d_fit.data" 
+s3 symbol 0 
+s3 line type 1 
+s3 line color 2 
+s3 layer 51 
+s3 legend off 
+page layout portrait 
+view xmin 0.2 
+view xmax 0.8 
+view ymin 0.85 
+view ymax 1.25 
+world xmin -12.5 
+world xmax -2.5 
+world ymin 0 
+world ymax 256.717425416 
+xaxis label "[log c]"  
+xaxis label font "Helvetica"  
+xaxis ticklabel font "Helvetica"  
+xaxis  tick major 1 
+xaxis  tick major size 0.8 
+xaxis  tick minor size 0.4 
+yaxis label "binding [% of control]"  
+yaxis label font "Helvetica"  
+yaxis ticklabel font "Helvetica"  
+yaxis  tick major size 0.8 
+yaxis  tick minor size 0.4 
+legend 0.2, 0.7 
+legend char size 0.7 
+legend font "Helvetica" 

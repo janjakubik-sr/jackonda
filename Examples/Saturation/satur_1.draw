@@ -1,0 +1,134 @@
+read xydy "sat_0.dat" 
+s0 symbol 1 
+s0 symbol size 0.7 
+s0 symbol color 1 
+s0 symbol fill color 1 
+s0 symbol fill pattern 1 
+s0 errorbar color 1 
+s0 errorbar size 0.7 
+s0 line type 0 
+s0 legend "K\sD\N=310.82 \#{B1} 20.51; B\sMAX\N=10.20 \#{B1} 0.24; sat_0" 
+read xy "sat_0_satur_1_fit.data" 
+s1 symbol 0 
+s1 line type 1 
+s1 line color 1 
+s1 layer 51 
+s1 legend off 
+read xydy "sat_1.dat" 
+s2 symbol 2 
+s2 symbol size 0.7 
+s2 symbol color 2 
+s2 symbol fill color 2 
+s2 symbol fill pattern 1 
+s2 errorbar color 2 
+s2 errorbar size 0.7 
+s2 line type 0 
+s2 legend "K\sD\N=307.09 \#{B1} 13.78; B\sMAX\N=8.63 \#{B1} 0.13; sat_1" 
+read xy "sat_1_satur_1_fit.data" 
+s3 symbol 0 
+s3 line type 1 
+s3 line color 2 
+s3 layer 51 
+s3 legend off 
+read xydy "sat_2.dat" 
+s4 symbol 3 
+s4 symbol size 0.7 
+s4 symbol color 3 
+s4 symbol fill color 3 
+s4 symbol fill pattern 1 
+s4 errorbar color 3 
+s4 errorbar size 0.7 
+s4 line type 0 
+s4 legend "K\sD\N=291.10 \#{B1} 12.31; B\sMAX\N=9.72 \#{B1} 0.14; sat_2" 
+read xy "sat_2_satur_1_fit.data" 
+s5 symbol 0 
+s5 line type 1 
+s5 line color 3 
+s5 layer 51 
+s5 legend off 
+read xydy "sat_3.dat" 
+s6 symbol 4 
+s6 symbol size 0.7 
+s6 symbol color 4 
+s6 symbol fill color 4 
+s6 symbol fill pattern 1 
+s6 errorbar color 4 
+s6 errorbar size 0.7 
+s6 line type 0 
+s6 legend "K\sD\N=383.16 \#{B1} 9.60; B\sMAX\N=9.42 \#{B1} 0.09; sat_3" 
+read xy "sat_3_satur_1_fit.data" 
+s7 symbol 0 
+s7 line type 1 
+s7 line color 4 
+s7 layer 51 
+s7 legend off 
+read xydy "sat_6.dat" 
+s8 symbol 5 
+s8 symbol size 0.7 
+s8 symbol color 5 
+s8 symbol fill color 5 
+s8 symbol fill pattern 1 
+s8 errorbar color 5 
+s8 errorbar size 0.7 
+s8 line type 0 
+s8 legend "K\sD\N=258.26 \#{B1} 14.34; B\sMAX\N=9.24 \#{B1} 0.17; sat_6" 
+read xy "sat_6_satur_1_fit.data" 
+s9 symbol 0 
+s9 line type 1 
+s9 line color 5 
+s9 layer 51 
+s9 legend off 
+read xydy "sat_7.dat" 
+s10 symbol 6 
+s10 symbol size 0.7 
+s10 symbol color 6 
+s10 symbol fill color 6 
+s10 symbol fill pattern 1 
+s10 errorbar color 6 
+s10 errorbar size 0.7 
+s10 line type 0 
+s10 legend "K\sD\N=249.06 \#{B1} 13.89; B\sMAX\N=10.03 \#{B1} 0.18; sat_7" 
+read xy "sat_7_satur_1_fit.data" 
+s11 symbol 0 
+s11 line type 1 
+s11 line color 6 
+s11 layer 51 
+s11 legend off 
+read xydy "sat_8.dat" 
+s12 symbol 7 
+s12 symbol size 0.7 
+s12 symbol color 7 
+s12 symbol fill color 7 
+s12 symbol fill pattern 1 
+s12 errorbar color 7 
+s12 errorbar size 0.7 
+s12 line type 0 
+s12 legend "K\sD\N=397.56 \#{B1} 21.56; B\sMAX\N=7.86 \#{B1} 0.16; sat_8" 
+read xy "sat_8_satur_1_fit.data" 
+s13 symbol 0 
+s13 line type 1 
+s13 line color 7 
+s13 layer 51 
+s13 legend off 
+page layout portrait 
+view xmin 0.2 
+view xmax 0.8 
+view ymin 0.85 
+view ymax 1.25 
+world xmin 0 
+world xmax 2200.0 
+world ymin 0 
+world ymax 10.8672 
+xaxis label "Free [ ]"  
+xaxis label font "Helvetica"  
+xaxis ticklabel font "Helvetica"  
+xaxis  tick major size 0.8 
+xaxis  tick minor size 0.4 
+yaxis label "binding [pmol / mg of protein]"  
+yaxis label font "Helvetica"  
+yaxis ticklabel font "Helvetica"  
+yaxis  tick major size 0.8 
+yaxis  tick minor size 0.4 
+legend 0.2, 0.7 
+legend char size 0.7 
+legend font "Helvetica" 

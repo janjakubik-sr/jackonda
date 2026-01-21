@@ -1,0 +1,55 @@
+read xydy "2_05.dat" 
+s0 symbol 1 
+s0 symbol size 0.7 
+s0 symbol color 1 
+s0 symbol fill color 0 
+s0 symbol fill pattern 1 
+s0 errorbar color 1 
+s0 errorbar size 0.7 
+s0 line type 0 
+s0 legend "\f{Symbol}t\f{}=0.3343 \#{B1} 0.2590; E\sMAX\N=2.65 \#{B1} 1.58; K\sA\N=0.002_05" 
+read xy "2_05_FR_OM_fit.data" 
+s1 symbol 0 
+s1 line type 1 
+s1 line color 1 
+s1 layer 51 
+s1 legend off 
+read xydy "2_10.dat" 
+s2 symbol 2 
+s2 symbol size 0.7 
+s2 symbol color 1 
+s2 symbol fill color 0 
+s2 symbol fill pattern 1 
+s2 errorbar color 1 
+s2 errorbar size 0.7 
+s2 line type 0 
+s2 legend "\f{Symbol}t\f{}=1.0302 \#{B1} 0.3335; E\sMAX\N=1.97 \#{B1} 0.34; K\sA\N=0.002_10" 
+read xy "2_10_FR_OM_fit.data" 
+s3 symbol 0 
+s3 line type 1 
+s3 line color 1 
+s3 layer 51 
+s3 legend off 
+page layout portrait 
+view xmin 0.2 
+view xmax 0.8 
+view ymin 0.85 
+view ymax 1.25 
+world xmin -9.5 
+world xmax -2.5 
+world ymin 0 
+world ymax 2.2968 
+xaxis label "[log c]"  
+xaxis label font "Helvetica"  
+xaxis ticklabel font "Helvetica"  
+xaxis  tick major 1 
+xaxis  tick major size 0.8 
+xaxis  tick minor size 0.4 
+yaxis label "[fold over basal]"  
+yaxis label font "Helvetica"  
+yaxis ticklabel font "Helvetica"  
+yaxis  tick major size 0.8 
+yaxis  tick minor size 0.4 
+legend 0.2, 0.7 
+legend char size 0.7 
+legend font "Helvetica" 

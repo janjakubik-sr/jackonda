@@ -1,0 +1,15 @@
+Operational Model - Depleted system
+Various agonists
+
+Model parameters
+Etot = 1e-06
+Rtot = 1e-05
+logKa = -7.0
+Ke1 = 1e-08
+Ke2 = 1e-07
+Ke3 = 3e-07
+Ke4 = 1e-06
+Ke5 = 3e-06
+
+
+31.05.2023 14:47:42

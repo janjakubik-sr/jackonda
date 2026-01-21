@@ -1,0 +1,103 @@
+read xydy "Data_A.dat" 
+s0 symbol 1 
+s0 symbol size 0.7 
+s0 symbol color 1 
+s0 symbol fill color 0 
+s0 symbol fill pattern 1 
+s0 errorbar color 1 
+s0 errorbar size 0.7 
+s0 line type 0 
+s0 legend "\f{Symbol}t\f{}=0.1511 \#{B1} 0.0431; E\sMAX\N=0.69 \#{B1} 0.17; logK\sA\N =-6.00; basal =0.00; Data_A" 
+read xy "Data_A_FR_OM_1_fit.data" 
+s1 symbol 0 
+s1 line type 1 
+s1 line color 1 
+s1 layer 52 
+s1 legend off 
+read xydy "Data_B.dat" 
+s2 symbol 2 
+s2 symbol size 0.7 
+s2 symbol color 1 
+s2 symbol fill color 0 
+s2 symbol fill pattern 1 
+s2 errorbar color 1 
+s2 errorbar size 0.7 
+s2 line type 0 
+s2 legend "\f{Symbol}t\f{}=1.0430 \#{B1} 0.1230; E\sMAX\N=0.99 \#{B1} 0.06; logK\sA\N =-6.00; basal =0.00; Data_B" 
+read xy "Data_B_FR_OM_1_fit.data" 
+s3 symbol 0 
+s3 line type 1 
+s3 line color 1 
+s3 layer 52 
+s3 legend off 
+read xydy "Data_C.dat" 
+s4 symbol 3 
+s4 symbol size 0.7 
+s4 symbol color 1 
+s4 symbol fill color 0 
+s4 symbol fill pattern 1 
+s4 errorbar color 1 
+s4 errorbar size 0.7 
+s4 line type 0 
+s4 legend "\f{Symbol}t\f{}=10.4219 \#{B1} 0.8774; E\sMAX\N=1.00 \#{B1} 0.01; logK\sA\N =-6.00; basal =0.00; Data_C" 
+read xy "Data_C_FR_OM_1_fit.data" 
+s5 symbol 0 
+s5 line type 1 
+s5 line color 1 
+s5 layer 52 
+s5 legend off 
+read xydy "Data_D.dat" 
+s6 symbol 4 
+s6 symbol size 0.7 
+s6 symbol color 1 
+s6 symbol fill color 0 
+s6 symbol fill pattern 1 
+s6 errorbar color 1 
+s6 errorbar size 0.7 
+s6 line type 0 
+s6 legend "\f{Symbol}t\f{}=104.2083 \#{B1} 5.7908; E\sMAX\N=1.00 \#{B1} 0.01; logK\sA\N =-6.00; basal =0.00; Data_D" 
+read xy "Data_D_FR_OM_1_fit.data" 
+s7 symbol 0 
+s7 line type 1 
+s7 line color 1 
+s7 layer 52 
+s7 legend off 
+read xydy "Data_E.dat" 
+s8 symbol 5 
+s8 symbol size 0.7 
+s8 symbol color 1 
+s8 symbol fill color 0 
+s8 symbol fill pattern 1 
+s8 errorbar color 1 
+s8 errorbar size 0.7 
+s8 line type 0 
+s8 legend "\f{Symbol}t\f{}=999.9995 \#{B1} 83.0856; E\sMAX\N=0.99 \#{B1} 0.01; logK\sA\N =-6.00; basal =0.00; Data_E" 
+read xy "Data_E_FR_OM_1_fit.data" 
+s9 symbol 0 
+s9 line type 1 
+s9 line color 1 
+s9 layer 52 
+s9 legend off 
+page layout portrait 
+view xmin 0.2 
+view xmax 0.8 
+view ymin 0.85 
+view ymax 1.25 
+world xmin -10.5 
+world xmax -1.5 
+world ymin 0 
+world ymax 1.1646800000000002 
+xaxis label "[log c]"  
+xaxis label font "Helvetica"  
+xaxis ticklabel font "Helvetica"  
+xaxis  tick major 1 
+xaxis  tick major size 0.8 
+xaxis  tick minor size 0.4 
+yaxis label "[fold over basal]"  
+yaxis label font "Helvetica"  
+yaxis ticklabel font "Helvetica"  
+yaxis  tick major size 0.8 
+yaxis  tick minor size 0.4 
+legend 0.15, 0.7 
+legend char size 0.7 
+legend font "Helvetica" 

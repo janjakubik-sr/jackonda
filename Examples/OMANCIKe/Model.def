@@ -1,0 +1,15 @@
+Operational Model - Non-competitive autoinhibition
+
+Model parameters
+Emax = 1.0
+Rtot = 1.0
+Ki = 1.0
+logKa = -6.0
+Ke1 = 5.0
+Ke2 = 2.0
+Ke3 = 1.0
+Ke4 = 0.5
+Ke5 = 0.2
+
+
+01.06.2023 14:14:39
