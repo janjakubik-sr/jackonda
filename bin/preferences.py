@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 #Installation directory with binaries
-install_dir = '/home/Jan Jakubik jan.jakubik@fgu.cas.cz/zoo/projects/jackonda/bin/'
+install_dir = '/home/roshi/zoo/projects/jackonda/bin/'
 #install_dir = 'C:\jackonda\bin\'
 
 #Installation directory with documentation
-doc_dir = '/home/Jan Jakubik jan.jakubik@fgu.cas.cz/zoo/projects/jackonda/Documentation/'
+doc_dir = '/home/roshi/zoo/projects/jackonda/Documentation/'
 #install_dir = 'C:\jackonda\Documentation\'
 
 #Installation directory with examples
-example_dir = '/home/Jan Jakubik jan.jakubik@fgu.cas.cz/zoo/projects/jackonda/Examples/'
+example_dir = '/home/roshi/zoo/projects/jackonda/Examples/'
 #example_dir = 'C:\jackonda\Examples\'
 
 #size of main app window

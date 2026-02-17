@@ -133,7 +133,9 @@ class MainWindow(wx.Frame):
         subMenu3 = wx.Menu()
         for id, label, helpText, handler in \
             [(wx.ID_ANY, 'FR - single effector - fold over basal', 'Analyze data', self.OnTask30),
+             (wx.ID_ANY, 'FR - single effector - FOB screen', 'Analyze data', self.OnTask30s),
              (wx.ID_ANY, 'FR - single effector - absolute increase', 'Analyze data', self.OnTask30a),
+             (wx.ID_ANY, 'FR - single effector - abs. increase screen', 'Analyze data', self.OnTask30as),
              (wx.ID_ANY, 'FR - single effector - %MPE', 'Analyze data', self.OnTask30b),
              (wx.ID_ANY, 'FR - single effector - variable basal', 'Analyze data', self.OnTask31),
              (wx.ID_ANY, 'FR - single effector - variable basal + fixed Emax', 'Analyze data', self.OnTask31a),
@@ -686,6 +688,16 @@ class MainWindow(wx.Frame):
         tolog = log.read()
         self.__log(tolog)
 
+    def OnTask30s(self, event):
+        self.__log('Batch processing ...')
+        exec_full(str(install_dir)+'FR_s.py')
+        log = open('temp.log','r')
+        tolog = log.read()
+        self.__log(tolog)
+        log = open('FR_s.res','r')
+        tolog = log.read()
+        self.__log(tolog)
+
     def OnTask30a(self, event):
         self.__log('Batch processing ...')
         exec_full(str(install_dir)+'FR_0.py')
@@ -693,6 +705,16 @@ class MainWindow(wx.Frame):
         tolog = log.read()
         self.__log(tolog)
         log = open('FR_0.res','r')
+        tolog = log.read()
+        self.__log(tolog)
+
+    def OnTask30as(self, event):
+        self.__log('Batch processing ...')
+        exec_full(str(install_dir)+'FR_0s.py')
+        log = open('temp.log','r')
+        tolog = log.read()
+        self.__log(tolog)
+        log = open('FR_0s.res','r')
         tolog = log.read()
         self.__log(tolog)
 
