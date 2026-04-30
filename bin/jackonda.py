@@ -72,6 +72,7 @@ class MainWindow(wx.Frame):
         dataMenu = wx.Menu()
         for id, label, helpText, handler in \
             [(wx.ID_ANY, 'Edit in text editor', 'Edit data', self.OnEdit),
+            (wx.ID_ANY, 'Add zeros as dY', 'Sort data by value of x', self.OnAddZeros),
             (wx.ID_ANY, 'Sort data by X', 'Sort data by value of x', self.OnSortX),
             (wx.ID_ANY, 'Sort data by Y', 'Sort data by value of y', self.OnSortY),
             (wx.ID_ANY, 'Swap X and Y', 'Swap axes', self.OnTransformSwap),
@@ -122,6 +123,8 @@ class MainWindow(wx.Frame):
              (wx.ID_ANY, 'Dissociation from one site - Koff, Beq', 'Analyze data', self.OnTask22b),
              (wx.ID_ANY, 'Dissociation from two sites', 'Analyze data', self.OnTask23),
              (wx.ID_ANY, 'Dissociation from sites, one rate fixed', 'Analyze data', self.OnTask24),
+             (wx.ID_ANY, 'Signal decay, one rate + ns', 'Analyze data', self.OnTask25),
+             (wx.ID_ANY, 'Signal decay, two rates + ns', 'Analyze data', self.OnTask26),
              ]:
             if id == None:
                 subMenu2.AppendSeparator()
@@ -336,6 +339,13 @@ class MainWindow(wx.Frame):
     def OnEdit(self, event):
         cmd = ('python '+str(install_dir)+'editor.py')
         subprocess.Popen(cmd, shell=True, stdin=None, stdout=None, stderr=None, close_fds=True)
+
+    def OnAddZeros(self, event):
+        self.__log('Adding zeros as dY')
+        exec_full(str(install_dir)+'add_zero_column.py')
+        log = open('temp.log','r')
+        tolog = log.read()
+        self.__log(tolog)
 
     def OnSortX(self, event):
         self.__log('Sorting by X values')
@@ -675,6 +685,26 @@ class MainWindow(wx.Frame):
         tolog = log.read()
         self.__log(tolog)
         log = open('dissociation_2f.res','r')
+        tolog = log.read()
+        self.__log(tolog)
+
+    def OnTask25(self, event):
+        self.__log('Batch processing ...')
+        exec_full(str(install_dir)+'decay_1.py')
+        log = open('temp.log','r')
+        tolog = log.read()
+        self.__log(tolog)
+        log = open('decay_1.res','r')
+        tolog = log.read()
+        self.__log(tolog)
+
+    def OnTask26(self, event):
+        self.__log('Batch processing ...')
+        exec_full(str(install_dir)+'decay_2.py')
+        log = open('temp.log','r')
+        tolog = log.read()
+        self.__log(tolog)
+        log = open('decay_2.res','r')
         tolog = log.read()
         self.__log(tolog)
 

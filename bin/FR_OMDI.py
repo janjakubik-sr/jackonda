@@ -209,7 +209,7 @@ else:
     None.__log(tolog)
 
 #select files
-dialog = wx.FileDialog(None, "Choose a control curve, [B] = "+str(B0)+"\n", os.getcwd(), "","*.dat", wx.FD_OPEN)
+dialog = wx.FileDialog(None, "Choose a control curve, [B] = "+str(B0)+" ", os.getcwd(), "","*.dat", wx.FD_OPEN)
 if dialog.ShowModal() == wx.ID_OK:
     selected_0=dialog.GetPath()
     data_0 = np.loadtxt(selected_0)    
@@ -222,7 +222,7 @@ else:
     tolog = log.read()
     None.__log(tolog)
 
-dialog = wx.FileDialog(None, "Choose a curve with the concentration, [B] = "+str(B1)+"\n", os.getcwd(), "","*.dat", wx.FD_OPEN)
+dialog = wx.FileDialog(None, "Choose a curve with the concentration, [B] = "+str(B1)+" ", os.getcwd(), "","*.dat", wx.FD_OPEN)
 if dialog.ShowModal() == wx.ID_OK:
     selected_1=dialog.GetPath()
     data_1 = np.loadtxt(selected_1)    
@@ -235,7 +235,7 @@ else:
     tolog = log.read()
     None.__log(tolog)
 
-dialog = wx.FileDialog(None, "Choose a curve with the concentration, [B] = "+str(B2)+"\n", os.getcwd(), "","*.dat", wx.FD_OPEN)
+dialog = wx.FileDialog(None, "Choose a curve with the concentration, [B] = "+str(B2)+" ", os.getcwd(), "","*.dat", wx.FD_OPEN)
 if dialog.ShowModal() == wx.ID_OK:
     selected_2=dialog.GetPath()
     data_2 = np.loadtxt(selected_2)    
@@ -248,7 +248,7 @@ else:
     tolog = log.read()
     None.__log(tolog)
 
-dialog = wx.FileDialog(None, "Choose a curve with the concentration, [B] = "+str(B3)+"\n", os.getcwd(), "","*.dat", wx.FD_OPEN)
+dialog = wx.FileDialog(None, "Choose a curve with the concentration, [B] = "+str(B3)+" ", os.getcwd(), "","*.dat", wx.FD_OPEN)
 if dialog.ShowModal() == wx.ID_OK:
     selected_3=dialog.GetPath()
     data_3 = np.loadtxt(selected_3)    
@@ -261,7 +261,7 @@ else:
     tolog = log.read()
     None.__log(tolog)
 
-dialog = wx.FileDialog(None, "Choose a curve with the concentration, [B] = "+str(B4)+"\n", os.getcwd(), "","*.dat", wx.FD_OPEN)
+dialog = wx.FileDialog(None, "Choose a curve with the concentration, [B] = "+str(B4)+" ", os.getcwd(), "","*.dat", wx.FD_OPEN)
 if dialog.ShowModal() == wx.ID_OK:
     selected_4=dialog.GetPath()
     data_4 = np.loadtxt(selected_4)    
@@ -274,7 +274,7 @@ else:
     tolog = log.read()
     None.__log(tolog)
 
-dialog = wx.FileDialog(None, "Choose a curve with the concentration, [B] = "+str(B5)+"\n", os.getcwd(), "","*.dat", wx.FD_OPEN)
+dialog = wx.FileDialog(None, "Choose a curve with the concentration, [B] = "+str(B5)+" ", os.getcwd(), "","*.dat", wx.FD_OPEN)
 if dialog.ShowModal() == wx.ID_OK:
     selected_5=dialog.GetPath()
     data_5 = np.loadtxt(selected_5)    
@@ -297,7 +297,7 @@ data_5 = np.loadtxt(selected_5)
 
 #create 3D data set
 data_x_0 = data_0[:,0]
-data_y_0 = np.linspace(B1,B1,len(data_0))
+data_y_0 = np.linspace(B0,B0,len(data_0))
 data_z_0 = data_0[:,1]
 data_zerr_0 = data_0[:,2]
 data_x_1 = data_1[:,0]
@@ -325,14 +325,12 @@ y_data = np.concatenate((data_y_0,data_y_1,data_y_2,data_y_3,data_y_4,data_y_5),
 z_data = np.concatenate((data_z_0,data_z_1,data_z_2,data_z_3,data_z_4,data_z_5),axis=None)
 z_data_err = np.concatenate((data_zerr_0,data_zerr_1,data_zerr_2,data_zerr_3,data_zerr_4,data_zerr_5),axis=None)
 
-#compute KE
-KE = 1/tauA
 #fit data
 p1 = [KB_ini, KC_ini, alpha_ini, beta_ini, gamma_ini]
 #Define global fit function
 def func_glob(x, y, p):
     KB, KC, alpha, beta, gamma = p
-    return basal + Emax * (( KB*KC*(10**x) / (KA*KB*KC+KB*KC*(10**x)+KA*KC*y+alpha*KC*(10**x)*y+KA*KB*y+beta*KA*(10**x)*y) )/KE+gamma*( alpha*KC*(10**x)*y / (KA*KB*KC+KB*KC*(10**x)+KA*KC*y+alpha*KC*(10**x)*y+KA*KB*y+beta*KA*(10**x)*y) )/KE)/(( KB*KC*(10**x) / (KA*KB*KC+KB*KC*(10**x)+KA*KC*y+alpha*KC*(10**x)*y+KA*KB*y+beta*KA*(10**x)*y) )/KE+gamma*( alpha*KC*(10**x)*y / (KA*KB*KC+KB*KC*(10**x)*KA*KC*y+alpha*KC*(10**x)*y+KA*KB*y+beta*KA*(10**x)*y) )/KE+1)
+    return basal + Emax * tauA*KC*(10**x)*(KB+gamma*alpha*y)/(KA*KB*KC+KB*KC*(10**x)+KA*KC*y+alpha*KC*(10**x)*y+KA*KB*y+beta*KA*(10**x)*y+tauA*KC*(10**x)*(KB+gamma*alpha*y))
 def err(p, x, y, z):
     return func_glob(x, y, p) - z
 pg_estim = p1

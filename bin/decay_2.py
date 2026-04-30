@@ -6,6 +6,8 @@ Created on Mon Apr 11 12:35:07 2016
 @author: Jan Jakubik jan.jakubik@fgu.cas.cz
 """
 import glob,os
+import sys
+import subprocess
 import time
 import wx
 import numpy as np
@@ -22,9 +24,7 @@ err = ''
 
 #initialize counters
 i = -1
-x_min_min = 0
-x_max_max = -15
-y_max_max = 1
+x_max_max = 0
 
 #test wheter we have files
 count = len(glob.glob('*.dat'))
@@ -36,15 +36,15 @@ if count == 0:
     dialog.Destroy()
 else:
     #prepare file for writing results
-    if os.path.isfile("FR_0s.res"):
-        os.remove("FR_0s.res")
-    res = open("FR_0s.res","w")
-    res.write("Functional response - one effector\n\n")
-    res.write("# logEC50\tEmax\t\tData file\n")
+    if os.path.isfile("decay_2.res"):
+        os.remove("decay_2.res")
+    res = open("decay_2.res","w")
+    res.write("decay from two sites\n\n")
+    res.write("Koff1\t\t\tKoff2\t\t\tF2\t\tns\t\t\tData file\n")
     #prepare file for Grace plot
-    if os.path.isfile("FR_0s.draw"):
-        os.remove("FR_0s.draw")
-    draw = open("FR_0s.draw","w")
+    if os.path.isfile("decay_2.draw"):
+        os.remove("decay_2.draw")
+    draw = open("decay_2.draw","w")
     c=-1 #plot counter
     d=0 #symbolcounter
     
@@ -60,15 +60,15 @@ else:
         x_max = np.amax(x_data)
         y_min = np.amin(y_data)
         y_max = np.amax(y_data)
-        if np.size(x_data) < 4 or (x_max - x_min) < 1:
+        if np.size(x_data) < 8:
             msg = ('Too few data points in ' +str(file)+ ' This data will be skipped\n')
             err = err + msg
             dialog = wx.MessageDialog(None, msg, 'Error', wx.OK)
             dialog.ShowModal()
             dialog.Destroy()
         else:
-            if x_min < -15 or x_max > 0:
-                msg = ('X value out of range ,<15,0>! '+str(file)+' will be skipped\n')
+            if x_min < 0 or y_max < 0 or y_max > 1.2:
+                msg = ('Wrong data! Probably normalized.\n'+str(file)+' will be skipped\n')
                 err = err + msg
                 dialog = wx.MessageDialog(None, msg, 'Error', wx.OK)
                 dialog.ShowModal()
@@ -76,37 +76,41 @@ else:
             else:
                 if x_max > x_max_max:
                     x_max_max = x_max
-                if x_min < x_min_min:
-                    x_min_min = x_min
-                if y_max > y_max_max:
-                    y_max_max = y_max
                 step = (x_max - x_min) * 0.01
                 #get estimates & bounds
-                EC50_estim = x_min + (x_max - x_min) * 0.5
-                EC50_min = x_min - 0.5
-                EC50_max = x_max + 0.5
-                if (y_max - 1) > ( 1- y_min):
-                    Emax_estim = y_max
-                    Emax_min = 1 + (y_max -1) * 0.5
-                    Emax_max = 1 + (y_max -1) * 2
-                else:
-                    Emax_estim = 0.5
-                    Emax_min = 0
-                    Emax_max = 1
+                Koff1_estim = 0.693 / (x_max * 0.3)
+                Koff1_min = 0.693 / x_max
+                Koff1_max = 0.693 / (x_max * 0.03)
+                Koff2_estim = 0.693 / (x_max * 0.6)
+                Koff2_min = 0.693 / (x_max * 2)
+                Koff2_max = 0.693 / (x_max * 0.3)
+                F2_estim = 0.25
+                F2_min = 0
+                F2_max = 1
+                ns_estim = 0.5
+                ns_min = 0
+                ns_max = 1
                 #fit data
-                p0 = np.array([EC50_estim, Emax_estim])
-                def func(x, EC50, Emax):
-                    return Emax / (1 + 10**((EC50-x)))
-                popt, pcov = opt.curve_fit(func, x_data, y_data, p0, bounds=([EC50_min,Emax_min],[EC50_max,Emax_max]))
+                p0 = np.array([Koff1_estim, Koff2_estim, F2_estim, ns_estim])
+                def func(x, Koff1, Koff2, F2, ns):
+                    import numpy
+                    return ns + (1 - F2 - ns) * numpy.exp(-Koff1 * x) + F2 * numpy.exp(-Koff2 * x)
+                popt, pcov = opt.curve_fit(func, x_data, y_data, p0, bounds=([Koff1_min, Koff2_min, F2_min, ns_min],[Koff1_max, Koff2_max, F2_max, ns_max]))
                 perr = np.sqrt(np.diag(pcov))
-                EC50_calc = (popt[0])
-                Emax_calc = (popt[1])
-                EC50_err = (perr[0])
-                Emax_err = (perr[1])
+                Koff1_calc = (popt[0])
+                Koff1_err = (perr[0])
+                Koff2_calc = (popt[1])
+                Koff2_err = (perr[1])
+                F2_calc = (popt[2])
+                F2_err = (perr[2])
+                ns_calc = (popt[3])
+                ns_err = (perr[3])
                 #write results
-                EC50_res = (str("{0:.2f}".format(EC50_calc))+' ± '+str("{0:.2f}".format(EC50_err)))
-                Emax_res = (str("{0:.2f}".format(Emax_calc))+' ± '+str("{0:.2f}".format(Emax_err)))
-                res.write(str(EC50_res)+"\t"+str(Emax_res)+"\t"+str(file)+"\n")
+                Koff1_res = (str("{0:.4f}".format(Koff1_calc))+' ± '+str("{0:.4f}".format(Koff1_err)))
+                Koff2_res = (str("{0:.4f}".format(Koff2_calc))+' ± '+str("{0:.4f}".format(Koff2_err)))
+                F2_res = (str("{0:.4f}".format(F2_calc))+' ± '+str("{0:.4f}".format(F2_err)))
+                ns_res = (str("{0:.4f}".format(ns_calc))+' ± '+str("{0:.4f}".format(ns_err)))
+                res.write(str(Koff1_res)+"\t"+str(Koff2_res)+"\t"+str(F2_res)+"\t"+str(ns_res)+"\t\t"+str(file)+"\n")
                 #write Grace plot
                 c=(c+1)
                 d=(d+1)
@@ -120,19 +124,19 @@ else:
                 draw.write("s"+str(c)+" errorbar color "+str(d)+" \n")
                 draw.write("s"+str(c)+" errorbar size 0.8 \n")
                 draw.write("s"+str(c)+" line type 0 \n")
-                draw.write("s"+str(c)+" legend \"log EC\\s50\\N="+str("{0:.2f}".format(EC50_calc))+' \\#{B1} '+str("{0:.2f}".format(EC50_err))+"; E\\sMAX\\N="+str("{0:.2f}".format(Emax_calc))+' \\#{B1} '+str("{0:.2f}".format(Emax_err))+"; "+str(base)+"\" \n")
+                draw.write("s"+str(c)+" legend \"K\\sOff1\\N="+str("{0:.4f}".format(Koff1_calc))+' \\#{B1} '+str("{0:.4f}".format(Koff1_err))+"; K\\sOff2\\N="+str("{0:.4f}".format(Koff2_calc))+' \\#{B1} '+str("{0:.4f}".format(Koff2_err))+"; F\\s2\\N="+str("{0:.4f}".format(F2_calc))+' \\#{B1} '+str("{0:.4f}".format(F2_err))+"; ns="+str("{0:.4f}".format(ns_calc))+' \\#{B1} '+str("{0:.4f}".format(ns_err))+"; "+str(base)+"\" \n")
                 #calculate fit
                 y_fit = func(x_data, *popt)
                 xy_fit = np.column_stack((x_data, y_fit))
                 #save fit
-                fit=(str(base)+'_FR_0_fit.data')
+                fit=(str(base)+'_decay_2_fit.data')
                 np.savetxt(fit,xy_fit,fmt='%.4e')
                 #calculate curve
-                x_curve = np.arange(x_min, x_max, step)
+                x_curve = np.arange(0, x_max, step)
                 y_curve = func(x_curve, *popt)
                 xy_curve = np.column_stack((x_curve, y_curve))
                 #save curve
-                curve=(str(base)+'_FR_0_curve.data')
+                curve=(str(base)+'_decay_2_curve.data')
                 np.savetxt(curve,xy_curve,fmt='%.4e')
                 c=(c+1)
                 e=(c-1)
@@ -160,13 +164,11 @@ else:
     res.write("\n\n"+str(now)+"\n")
     res.close()
     #Plot
-    ax_min = x_min_min - 0.5
-    ax_max = x_max_max + 0.5
-    ay_max = y_max_max * 1.1
-    plt.title("Functional response")
-    plt.axis([ax_min,ax_max,0,ay_max])
-    plt.xlabel("ligand [log c]")
-    plt.ylabel("response [fold over basal]")
+    ax_max = x_max_max * 1.1
+    plt.title("Signal kinetics")
+    plt.axis([0,ax_max,0,1.2])
+    plt.xlabel("Time [min]")
+    plt.ylabel("Tracer signal [fraction of control]")
     plt.show()
     #Grace plot
     draw.write("page size 595, 842 \n")
@@ -174,17 +176,16 @@ else:
     draw.write("view xmax 0.8 \n")
     draw.write("view ymin 0.85 \n")
     draw.write("view ymax 1.25 \n")
-    draw.write("world xmin "+str(ax_min)+" \n")
+    draw.write("world xmin 0 \n")
     draw.write("world xmax "+str(ax_max)+" \n")
     draw.write("world ymin 0 \n")
-    draw.write("world ymax "+str(ay_max)+" \n")
-    draw.write("xaxis label \"[log c]\"  \n")
+    draw.write("world ymax 1.2 \n")
+    draw.write("xaxis label \"Time []\"  \n")
     draw.write("xaxis label font \"Helvetica\"  \n")
     draw.write("xaxis ticklabel font \"Helvetica\"  \n")
-    draw.write("xaxis  tick major 1 \n")
     draw.write("xaxis  tick major size 0.8 \n")
     draw.write("xaxis  tick minor size 0.4 \n")
-    draw.write("yaxis label \"[fold over basal]\"  \n")
+    draw.write("yaxis label \"Tracer signal [fraction of control]\"  \n")
     draw.write("yaxis label font \"Helvetica\"  \n")
     draw.write("yaxis ticklabel font \"Helvetica\"  \n")
     draw.write("yaxis  tick major size 0.8 \n")
